@@ -92,8 +92,8 @@ footer {
     top: 44%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: clamp(500px, 33vw, 800px);
-    min-height: 40vh;
+    width: clamp(500px, 33vw, 700px);
+    min-height: 30vh;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -105,13 +105,14 @@ footer {
     top: 8%; /* Laat de achtergrond net onder h1 beginnen */
     left: 50%;
     transform: translateX(-50%);
-    width: 110%; /* Zorg ervoor dat de achtergrond iets breder is dan de content */
+    width: 120%; /* Zorg ervoor dat de achtergrond iets breder is dan de content */
     height: 100%; /* Laat de achtergrond de rest van de container vullen */
     background-color: rgba(255, 255, 255, 0.8); /* Verhoog de transparantie */
     border: 10px solid #304878;
     border-radius: 15px; /* Maak de randen iets ronder */
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.30); /* Voeg een subtiele schaduw toe */
     z-index: -1;
+    overflow-y:auto;
 }
 
 .intro-text h1, .intro-text h2, .intro-text .subtitle {
@@ -128,14 +129,14 @@ footer {
 }
 
 .intro-text h2 {
-    font-size: clamp(16px, 2vw, 30px);
+    font-size: clamp(16px, 2vw, 24px);
     color: #465267;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
 .intro-text .subtitle {
-    font-size: clamp(14px, 1.5vw, 25px);
+    font-size: clamp(12px, 1.5vw, 18px);
     color: #6e7b8b;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -146,7 +147,7 @@ footer {
     margin-top: 2px;
     border: 6px solid #152036;
     border-radius: 10px;
-    width: 100%;
+    width: 105%;
     position: relative;
     font-size: clamp(18px, 1.2vw, 22px);
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.10); /* Voeg een subtiele schaduw toe */
@@ -215,8 +216,8 @@ footer {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    width: max(20px, 1.4vw);
-    height: max(20px, 1.4vw);
+    width: max(23px, 1.4vw);
+    height: max(23px, 1.4vw);
     background-color: #304878c7;
     border: 3px solid white;
     border-radius: 2px;
@@ -276,8 +277,8 @@ input[type="checkbox"] {
     -moz-appearance: none;
     appearance: none;
     font-family: 'DarkForest', sans-serif; 
-    width: max(25px, 1.4vw);
-    height: max(25px, 1.4vw);
+    width: max(23px, 1.4vw);
+    height: max(23px, 1.4vw);
     background-color: #304878c7;
     border: 3px solid white;
     border-radius: 2px;
@@ -287,7 +288,7 @@ input[type="checkbox"] {
 
 /* Algemene styling voor labels binnen themarijen */
 .theme-row label {
-    margin-right: 30px;
+    margin-right: 25px;
     white-space: nowrap;
     position: relative;
     display: inline-block;
@@ -296,7 +297,7 @@ input[type="checkbox"] {
 }
 
 .theme-row label:last-of-type {
-    margin-right: 3px;
+    margin-right: 1px;
 
 }
 
@@ -386,41 +387,39 @@ input[type="checkbox"]:disabled + label {
 }
 
 .start-container {
-    position: absolute; /* Absolute positionering zodat de container goed te plaatsen is */
-    bottom: 1%; /* Plaats de container aan de onderkant van de pagina */
-    left: 50%; /* Plaats de container horizontaal gecentreerd */
-    transform: translateX(-50%); /* Nauwkeurige horizontale centrering */
-    width: 100%; /* Zorg ervoor dat de container de volledige breedte inneemt */
-    display: flex; /* Gebruik flexbox om de items binnen de container te centreren */
-    justify-content: center; /* Centreer de inhoud horizontaal */
-    align-items: flex-end; /* Plaats de inhoud aan de onderkant van de container */
-    pointer-events: none; /* Zorg ervoor dat de container zelf geen muisklikken vangt */
-    z-index: 1; /* Zorg ervoor dat de container boven de footer ligt */
+    position: fixed; /* Zorg ervoor dat de start-container altijd onderaan het scherm blijft */
+    bottom: 0; /* Plaats de container direct aan de onderkant van het scherm */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    z-index: 2; /* Plaats de container boven de footer */
 }
 
 .startknop {
-    position: relative; /* Zorg ervoor dat de knop relatief aan de container wordt geplaatst */
-    left: 0; /* Plaats de knop horizontaal gecentreerd */
-    transform: translateX(62%); /* Nauwkeurige horizontale centrering */
-    z-index: 2; /* Zorg ervoor dat de knop bovenop de container ligt */
-    pointer-events: auto; /* Zorg ervoor dat de knop klikbaar is */
+    position: absolute; /* Maak de startknop absoluut gepositioneerd binnen de start-container */
+    bottom: 0px; /* Plaats de startknop direct aan de onderkant van de start-container */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3; /* Zorg ervoor dat de startknop boven de andere elementen komt */
+    pointer-events: auto;
 }
 
 .startknop img {
-    width: clamp(100px, 6vw, 200px); /* Schaal de breedte met de viewport, maar houd een minimum van 75px en een maximum van 150px */
-    height: auto; /* Behoud de aspect ratio */
-    min-width: 100px; /* Minimale breedte om te voorkomen dat de knop te klein wordt */
+    width: clamp(100px, 6vw, 200px); /* Schaal de breedte met de viewport, met een minimum van 100px */
+    height: auto;
+    min-width: 100px;
 }
 
 #StartQuizknop {
-    position: relative;
+    position: absolute;
     font-family: 'DarkForest', sans-serif;
     font-size: max(22px, 1.6vw);
-    bottom: 85px; /* Plaats de knop precies op het rode gedeelte van de startknop */
-    left: 0; /* Plaats de knop horizontaal gecentreerd */
-    transform: translateX(-39%); /* Nauwkeurige horizontale centrering */
-    z-index: 3;
-    pointer-events: auto;
+    bottom: 70px; /* Plaats de knop precies op het rode gedeelte van de startknop */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
     background-color: transparent;
     color: #152036c0;
     padding: 14px 14px;
@@ -429,16 +428,16 @@ input[type="checkbox"]:disabled + label {
     cursor: pointer;
     transition: background-size 0.5s ease-out, padding 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
     background-size: 0% 100%;
+    pointer-events: auto; /* Zorg ervoor dat de knop klikbaar blijft */
 }
 
-button#StartQuizknop:hover {
+#StartQuizknop:hover {
     color: white;
     border-radius: 7px;
     background-image: linear-gradient(to right, #152036c0 0%, #304878 100%);
     background-size: 250% 250%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Gebruik box-shadow voor het hover effect */
 }
-
 
 .downloadContainer {
     position: absolute;
@@ -715,6 +714,7 @@ video {
     }
 
     button#StartQuizknop {
+         font-family: 'DarkForest', sans-serif;
         position: absolute;
         bottom: -12%; /* Zet de startknop aan de onderkant */
         left: 50%;

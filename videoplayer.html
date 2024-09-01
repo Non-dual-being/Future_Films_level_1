@@ -4,69 +4,18 @@
     <meta charset="UTF-8">
     <meta viewport="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="videoscript.js"></script>
+
     <title>VideoPlayer</title>
 </head>
 <body class="videoPlayer">
     <form id="videoform">
         <div id="videoPlayerContainer">
             <video id="videoPlayer" width="1080" controls></video>
-        </div> 
-
-    <script>
-        window.onload = function() {
-            speelVideos();
-        };
-
-        function speelVideos(shuffle = false) {
-            let videoLijst = JSON.parse(localStorage.getItem('videoLijst')) || [];
-            if (shuffle) {
-                videoLijst = videoLijst.sort(() => Math.random() - 0.5);
-                localStorage.setItem('videoLijst', JSON.stringify(videoLijst));
-            }
-    
-            if (videoLijst.length > 0) {
-                const videoPlayer = document.getElementById('videoPlayer');
-                const source = document.createElement('source');
-                source.setAttribute('src', `./videos/${videoLijst[0]}`);
-                source.setAttribute('type', 'video/mp4');
-                videoPlayer.innerHTML = ''; // Verwijder vorige bronnen
-                videoPlayer.appendChild(source);
-                videoPlayer.load();
-                videoPlayer.play();
-    
-                videoPlayer.onended = function() {
-                    videoLijst.shift(); // Verwijder de zojuist gespeelde video
-                    localStorage.setItem('videoLijst', JSON.stringify(videoLijst)); // Update de lijst in localStorage
-                    if (videoLijst.length > 0) {
-                        speelVideos(); // Speel de volgende video
-                    } else {
-                        console.log("Geen meer video's om te spelen.");
-                        // Optioneel: Navigeer terug of toon een bericht
-                    }
-                };
-            } else {
-                console.log("Geen video's beschikbaar om te spelen.");
-            }
-            document.getElementById('playButton').addEventListener('click', function() {
-                document.getElementById('videoPlayer').play();
-                });
-
-            document.getElementById('pauseButton').addEventListener('click', function() {
-                document.getElementById('videoPlayer').pause();
-        });
-            document.getElementById('fullscreenButton').addEventListener('click', function() {
-                document.getElementById('videoPlayer').requestFullscreen();
-        });
-
-        }
-        
-        document.addEventListener('wheel', function(event) {
-            if (event.ctrlKey) {event.preventDefault();}}, { passive: false });
-    </script>
-   
+        </div>  
 </form>
 <div class="buttonContainer">
-    <button id="Terugknop" onclick="window.location.href = './futurefilms.html';">Nieuwe Selectie</button>
+    <button id="Terugknop" onclick="window.location.href = './index.html';">Nieuwe Selectie</button>
     <button id="shuffleknop" onclick="speelVideos(true);">Shuffle en Speel Opnieuw</button>
 </div>
 

@@ -778,3 +778,141 @@ video {
         margin: 0 auto;
     }
 }
+
+@media only screen and (max-width: 1400px) { /* Pas dit aan afhankelijk van wanneer het probleem optreedt */
+    body.futurefilms {
+        font-family: 'DarkForest', sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        height: auto;
+        background-image: url('./achtergrond_FutureFilms_selectionpage.png');
+        background-size: cover;
+        background-position: center top;
+        background-repeat: no-repeat;
+        overflow: hidden; /* Voorkom onnodig scrollen in de body */
+    }
+    .center-container {
+        width: 55%; /* Pas dit aan zoals gewenst */
+        max-width: 800px; /* Zorg voor een maximale breedte afhankelijk van de viewport */
+        height: auto;
+        max-height: calc(100vh - 20px - 2rem - 45px); /* Max hoogte minus header en footer */
+        margin: 0 auto; /* Gebruik margin om de container goed te positioneren */
+        overflow-y: auto; /* Sta verticale scroll toe */
+        overflow-x: hidden; /* Voorkom horizontale scroll */
+        position: absolute;
+        top: calc(5px + 2rem); /* Start direct onder de header, 20px en 2rem is de header hoogte */
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.8); /* Maak de achtergrond iets transparant */
+        border: 10px solid #304878;
+        border-radius: 15px;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.30); /* Voeg een subtiele schaduw toe */
+        padding: 10px; /* Voeg padding toe zodat de inhoud niet tegen de rand staat */
+        box-sizing: border-box; /* Zorg dat padding wordt meegerekend in de breedte */
+        z-index: 1; /* Zorg dat de container boven andere inhoud komt */
+    }
+    
+
+    .center-container::before {
+        display: none;
+    }
+    
+
+    button#StartQuizknop {
+        position: absolute;
+        font-family: 'DarkForest', sans-serif;
+        font-size: max(22px, 1.6vw);
+        bottom: 70px; /* Plaats de knop precies op het rode gedeelte van de startknop */
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 4;
+        background-color: transparent;
+        color: #152036c0;
+        padding: 14px 14px;
+        padding-top: 17px;
+        border: none;
+        cursor: pointer;
+        transition: background-size 0.5s ease-out, padding 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        background-size: 0% 100%;
+        pointer-events: auto; /* Zorg ervoor dat de knop klikbaar blijft */
+    }
+
+    button#StartQuizknop:hover {
+        color: white;
+        border-radius: 7px;
+        background-image: linear-gradient(to right, #152036c0 0%, #304878 100%);
+        background-size: 250% 250%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Gebruik box-shadow voor het hover effect */
+    }
+
+    #themesForm {
+        padding: 5px;
+        margin-top: 2px;
+        border: 6px solid #152036;
+        border-radius: 10px;
+        width: 100%; /* Zorg ervoor dat het formulier de volledige breedte van de container inneemt */
+        box-sizing: border-box; /* Houd rekening met padding en border bij de breedte */
+    }
+
+    .start-container {
+        position: fixed; /* Zorg ervoor dat de start-container altijd onderaan het scherm blijft */
+        bottom: -25px; /* Plaats de container direct aan de onderkant van het scherm */
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2; /* Zorg dat de startknop boven de container komt */
+        pointer-events: none; /* Zorg ervoor dat deze container geen muisklikken opvangt */
+    }
+
+    .center-container {
+        overflow-y: scroll;
+    }
+    
+    .center-container::-webkit-scrollbar {
+        width: 10px; /* Voeg een scrollbar toe met een breedte van 10px */
+    }
+    
+    .center-container::-webkit-scrollbar-track {
+        background: transparent; /* Track van de scrollbar is transparant */
+    }
+    
+    .center-container::-webkit-scrollbar-thumb {
+        background-color: #304878; /* Kleur van de scrollbar */
+        border-radius: 10px; /* Ronde hoeken aan de scrollbar */
+        border: 2px solid #ffffff; /* Wit randje om de scrollbar */
+    }
+    
+
+    /* Zorg ervoor dat de header en footer ook goed werken op kleinere schermen */
+    header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        padding: 10px 0;
+        background-color: rgba(21, 32, 54, 0.9);
+    }
+
+    footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: max(45px, 8vh);
+        text-align: center;
+        background-color: #152036;
+        padding: 3vh 0;
+        z-index: 1000;
+        overflow: hidden;
+    }
+}

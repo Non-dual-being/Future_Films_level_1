@@ -8,25 +8,19 @@ function speelVideos(shuffle = false, isIntro = true) {
     const introVideo = 'intro.mp4';
     const outroVideo = 'outro.mp4';
 
-    // Controleer of we de intro en outro moeten toevoegen
+    // Voeg intro en outro toe aan de lijst
     if (isIntro) {
-        // Verwijder eventuele bestaande intro en outro om duplicaten te voorkomen
         videoLijst = videoLijst.filter(video => video !== introVideo && video !== outroVideo);
         videoLijst.unshift(introVideo);
         videoLijst.push(outroVideo);
-        console.log('De eerste videolijst', videoLijst);
     } else {
-        // Verwijder intro als die al is afgespeeld
         videoLijst = videoLijst.filter(video => video !== introVideo);
-        
     }
 
     if (shuffle) {
-        // Shuffle de video's tussen intro en outro
         const middleVideos = videoLijst.slice(1, -1).sort(() => Math.random() - 0.5);
         videoLijst = [introVideo, ...middleVideos, outroVideo];
         localStorage.setItem('videoLijst', JSON.stringify(videoLijst));
-        console.log("Aankomende video's zijn:", videoLijst);
     }
 
     if (videoLijst.length > 0) {
@@ -34,16 +28,24 @@ function speelVideos(shuffle = false, isIntro = true) {
         const source = document.createElement('source');
         source.setAttribute('src', `./videos/${videoLijst[0]}`);
         source.setAttribute('type', 'video/mp4');
-        videoPlayer.innerHTML = ''; // Verwijder vorige bronnen
+        videoPlayer.innerHTML = '';
         videoPlayer.appendChild(source);
         videoPlayer.load();
         videoPlayer.play();
 
+        // Preload de volgende video
+        if (videoLijst.length > 1) {
+            const nextVideoPlayer = document.createElement('video');
+            nextVideoPlayer.setAttribute('src', `./videos/${videoLijst[1]}`);
+            nextVideoPlayer.setAttribute('type', 'video/mp4');
+            nextVideoPlayer.load(); // Preload de volgende video
+        }
+
         videoPlayer.onended = function() {
-            videoLijst.shift(); // Verwijder de zojuist afgespeelde video
-            localStorage.setItem('videoLijst', JSON.stringify(videoLijst)); // Update de lijst in localStorage
+            videoLijst.shift();
+            localStorage.setItem('videoLijst', JSON.stringify(videoLijst));
             if (videoLijst.length > 0) {
-                speelVideos(false, false); // Speel de volgende video
+                speelVideos(false, false);
             } else {
                 console.log("Geen video's meer om te spelen.");
             }
@@ -66,4 +68,5 @@ function speelVideos(shuffle = false, isIntro = true) {
 }
 
 document.addEventListener('wheel', function(event) {
-    if (event.ctrlKey) {event.preventDefault();}}, { passive: false });
+    if (event.ctrlKey) { event.preventDefault(); }}, { passive: false });
+

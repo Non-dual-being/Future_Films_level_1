@@ -1,0 +1,13 @@
+.theme-row:first-of-type .level-toggle + label:after {
+    content: " 🎬"; /* Clapper Board Emoji als voorbeeld */
+    color: #152036;
+    font-size: 15px;
+}
+
+
+/* Styling voor het label dat volgt na een uitgeschakelde checkbox */
+.disabled-checkbox + label:after {
+    content: " \231B ";
+    color: #152036;
+    font-size: 15px;
+}

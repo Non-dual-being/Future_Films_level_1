@@ -21,15 +21,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Houdt het laadscherm boven alle andere inhoud */
+    z-index: 1000; /* Keeps the loading screen above all other content */
 }
 
 .loader {
     border: 8px solid #f3f3f3; /* Light grey */
     border-top: 8px solid #3498db; /* Blue */
     border-radius: 50%;
-    width: min(50px, 10vw); /* Minimaal 50px of 10% van de viewport breedte */
-    height: min(50px, 10vw); /* Minimaal 50px of 10% van de viewport hoogte */
+    width: min(50px, 10vw); /* Minimum 50px or 10% of the viewport width */
+    height: min(50px, 10vw); /* Minimum 50px or 10% of the viewport height */
     animation: spin 2s linear infinite;
 }
 
@@ -102,17 +102,17 @@ footer {
 .center-container::before {
     content: "";
     position: absolute;
-    top: 8%; /* Laat de achtergrond net onder h1 beginnen */
+    top: 8%; /* Starts the background just below h1 */
     left: 50%;
     transform: translateX(-50%);
-    width: 120%; /* Zorg ervoor dat de achtergrond iets breder is dan de content */
-    height: 100%; /* Laat de achtergrond de rest van de container vullen */
-    background-color: rgba(255, 255, 255, 0.8); /* Verhoog de transparantie */
+    width: 120%; /* Ensures the background is slightly wider than the content */
+    height: 100%; /* Fills the rest of the container with the background */
+    background-color: rgba(255, 255, 255, 0.8); /* Increases transparency */
     border: 10px solid #304878;
-    border-radius: 15px; /* Maak de randen iets ronder */
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.30); /* Voeg een subtiele schaduw toe */
+    border-radius: 15px; /* Rounds the edges slightly */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.30); /* Adds a subtle shadow */
     z-index: -1;
-    overflow-y:auto;
+    overflow-y: auto;
 }
 
 .intro-text h1, .intro-text h2, .intro-text .subtitle {
@@ -125,7 +125,7 @@ footer {
 .intro-text h1 {
     font-size: clamp(35px, 2.9vw, 60px);
     color: #152036;
-    transform: translate(0%,-30%);
+    transform: translate(0%, -30%);
 }
 
 .intro-text h2 {
@@ -150,7 +150,7 @@ footer {
     width: 105%;
     position: relative;
     font-size: clamp(18px, 1.2vw, 22px);
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.10); /* Voeg een subtiele schaduw toe */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.10); /* Adds a subtle shadow */
 }
 
 #themesForm::before, #themesForm::after {
@@ -173,7 +173,7 @@ footer {
     width: 50%;
     background-color: #F4F4F8;
 }
-/* Algemene styling voor de rijen in de themalijst */
+/* General styling for the rows in the theme list */
 .theme-row {
     display: flex;
     align-items: center;
@@ -188,43 +188,54 @@ footer {
     border: white 1px solid;
 }
 
-/* Specifieke styling voor de eerste rij in de themalijst (NiveauSelector) */
+/* Specific styling for the first row in the theme list (NiveauSelector) */
 .theme-row:first-of-type {
-    border: 5px solid white;
-    background: linear-gradient(to right, #33415C 50%, #f0f0f0 50%);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 5px solid whitesmoke; /* Soft pink edge for the NiveauSelector */
+    background: linear-gradient(to right, #33415C 50%, #d8e2f0 50%); /* Right side light pastel pink */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
     margin-top: 3px;
     justify-content: space-between;
 }
 
-/* Styling voor de labels binnen de themarijen */
+/* Hover effect */
+.theme-row:first-of-type:hover {
+    background: linear-gradient(to right, #33415C 50%, #c6d6e7 50%);
+    border-color: #c6d6e7; /* Lighter pink edge on hover */
+}
+/* Styling for the labels within the theme rows */
 .theme-row .themes-label {
     font-size: max(20px, 1.2vw);
     margin-left: 2px;
 }
 
-/* Styling voor de container die de checkboxes "1", "2", "3" bevat */
+/* Styling for the container holding the checkboxes "1", "2", "3" */
 .theme-row .level-toggles {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Styling voor de individuele checkboxes "1", "2", "3" */
+.theme-row .level-toggles label:last-of-type {
+    margin-right: 14px; /* Adjust the value as desired */
+}
+
+
+/* Styling for the individual checkboxes "1", "2", "3" */
 .theme-row input.level-toggle {
     position: relative;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    width: max(23px, 1.4vw);
-    height: max(23px, 1.4vw);
+    width: max(26px, 1.4vw);
+    height: max(26px, 1.4vw);
     background-color: #304878c7;
-    border: 3px solid white;
-    border-radius: 2px;
+    border: 4px solid white;
+    border-radius: 9px;
     cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
 
-/* Hover effect voor de checkboxes "1", "2", "3" */
+/* Hover effect for the checkboxes "1", "2", "3" */
 input.level-toggle:hover {
     background-color: #465267;
     border-color: #304878;
@@ -232,7 +243,7 @@ input.level-toggle:hover {
     transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Styling voor de checkboxes wanneer ze zijn aangevinkt en erover wordt gehooverd */
+/* Styling for the checkboxes when they are checked and hovered over */
 input.level-toggle:checked:hover {
     background-color: white;
     background-image: linear-gradient(to top, #ffffff, #f0f0f0);
@@ -240,7 +251,7 @@ input.level-toggle:checked:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
 }
 
-/* Styling voor het icoon dat verschijnt wanneer een checkbox is aangevinkt */
+/* Styling for the icon that appears when a checkbox is checked */
 input.level-toggle:checked::after {
     content: "\1F4A7";
     color: #152036;
@@ -251,27 +262,27 @@ input.level-toggle:checked::after {
     font-size: max(10px, 0.9vw);
 }
 
-/* Styling voor de disabled checkboxes (niet niveau selector) */
+/* Styling for the disabled checkboxes (not the level selector) */
 .theme-row .disabled-checkbox:hover{
-    border-color: #304878; /* Zelfde randkleur als bij hover van niet-disabled */
-    box-shadow: 0 2px 4px #00000040; /* Zelfde schaduw als bij hovean niet-disabled */
+    border-color: #304878; /* Same edge color as on hover of not-disabled */
+    box-shadow: 0 2px 4px #00000040; /* Same shadow as on hover of not-disabled */
     transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 
-/* Styling voor het eerste label in een themarij (meestal de themanaam) */
+/* Styling for the first label in a theme row (usually the theme name) */
 .theme-row label:first-child {
    color: #F7FFF6;
 }
 
-/* Specifieke styling voor het eerste label in elke themarij */
+/* Specific styling for the first label in each theme row */
 .theme-row label:first-of-type {
     flex-grow: 1;
     text-align: left;
     font-size: max(15px, 1.2vw);
 }
 
-/* Algemene styling voor alle checkbox elementen */
+/* General styling for all checkbox elements */
 input[type="checkbox"] {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -286,7 +297,7 @@ input[type="checkbox"] {
 }
 
 
-/* Algemene styling voor labels binnen themarijen */
+/* General styling for labels within theme rows */
 .theme-row label {
     margin-right: 25px;
     white-space: nowrap;
@@ -296,17 +307,20 @@ input[type="checkbox"] {
     justify-content: center;
 }
 
-.theme-row label:last-of-type {
-    margin-right: 1px;
+.theme-row:first-of-type label {
+    margin-right: 52px; /* Custom margin for the first theme row */
+}
 
+.theme-row label:last-of-type {
+    margin-right: 4px;
 }
 
 input[type="checkbox"]{
-    margin-right: 4px; /* 1px ruimte tussen de checkbox en het bijbehorende nummer */
+    margin-right: 4px; /* 1px space between the checkbox and its corresponding number */
 }
 
 
-/* Hover effect voor een checkbox die ingeschakeld is */
+/* Hover effect for an enabled checkbox */
 .theme-row .enabled-checkbox:hover {
     background-color: #465267;
     cursor: pointer;
@@ -315,99 +329,86 @@ input[type="checkbox"]{
     transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Active state styling voor een checkbox */
+/* Active state styling for a checkbox */
 .theme-row .enabled-checkbox:active {
     transform: scale(1.4);
     background-color: #b0c4de;
 }
 
-/* Styling voor een checkbox wanneer deze is aangevinkt */
+/* Styling for a checkbox when it is checked */
 .theme-row .enabled-checkbox:checked {
     background-color: white;
     transform: scale(1);
-    border: 4px solid #152036; /* Donkere rand om de checkbox */
+    border: 4px solid #152036; /* Dark edge around the checkbox */
 }
 
-/* Hover effect voor een aangevinkte checkbox */
+/* Hover effect for a checked checkbox */
 .theme-row .enabled-checkbox:checked:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
     background-image: linear-gradient(to top, #ffffff, #f0f0f0);
     border-color: #465267;
 }
 
-/* Styling voor het icoon dat verschijnt wanneer een checkbox is aangevinkt */
+/* Styling for the icon that appears when a checkbox is checked */
 .theme-row .enabled-checkbox:checked::after {
     content: "\1F4A7";
     color: #152036;
     position: absolute;
     left: 50%;
-    top: 48%;
+    top: 46%;
     transform: translate(-50%, -50%);
-    font-size: max(10px, 0.9vw);
+    font-size: max(9px, 0.8vw);
 }
 
-/* Styling voor checkboxes die zijn uitgeschakeld (disabled) */
+/* Styling for checkboxes that are disabled (not level selector) */
 input[type="checkbox"]:disabled {
     opacity: 0.6;
     background-color: #b3d1ff;
     cursor: default;
 }
 
-/* Styling voor labels van uitgeschakelde (disabled) checkboxes */
+/* Styling for labels of disabled (not enabled) checkboxes */
 input[type="checkbox"]:disabled + label {
     cursor: default;
 }
 
-/* Voeg een icoon toe aan het label van een ingeschakelde checkbox bij de themarijen */
+/* Add an icon to the label of an enabled checkbox in the theme rows */
 .theme-row .enabled-checkbox + label:after {
-    content: " 🎬"; /* Clapper Board Emoji als voorbeeld */
-    color: #152036;
-    font-size: 15px;
-}
-
-.theme-row:first-of-type .level-toggle + label:after {
-    content: " 🎬"; /* Clapper Board Emoji als voorbeeld */
+    content: " 🎬"; /* Clapper Board Emoji as an example */
     color: #152036;
     font-size: 15px;
 }
 
 
-/* Styling voor het label dat volgt na een uitgeschakelde checkbox */
+/* Styling for the label that follows a disabled checkbox */
 .disabled-checkbox + label:after {
     content: " \231B ";
     color: #152036;
     font-size: 15px;
 }
 
-/* Specifieke styling voor het label van de NiveauSelector */
-.theme-row:first-of-type input.level-toggle:disabled + label:after {
-    content: " \231B ";
-    color: #152036;
-    font-size: 15px;
-}
-
 .start-container {
-    position: fixed; /* Zorg ervoor dat de start-container altijd onderaan het scherm blijft */
-    bottom: 0; /* Plaats de container direct aan de onderkant van het scherm */
+    position: fixed; /* Ensures the start-container always stays at the bottom of the screen */
+    bottom: 0; /* Places the container directly at the bottom of the screen */
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     pointer-events: none;
-    z-index: 2; /* Plaats de container boven de footer */
+    z-index: 2; /* Places the container above the footer */
 }
 
 .startknop {
-    position: absolute; /* Maak de startknop absoluut gepositioneerd binnen de start-container */
-    bottom: 0px; /* Plaats de startknop direct aan de onderkant van de start-container */
+    position: absolute; /* Makes the start button absolutely positioned within the start-container */
+    bottom: 0px; /* Places the start button directly at the bottom of the start-container */
     left: 50%;
     transform: translateX(-50%);
-    z-index: 3; /* Zorg ervoor dat de startknop boven de andere elementen komt */
+    z-index: 3; /* Ensures the start button comes above other elements */
     pointer-events: auto;
 }
 
 .startknop img {
-    width: clamp(100px, 6vw, 200px); /* Schaal de breedte met de viewport, met een minimum van 100px */
+    width: clamp(100px, 6vw, 200px); /* Scales the width with the viewport, with a minimum of 100px */
     height: auto;
     min-width: 100px;
 }
@@ -416,7 +417,7 @@ input[type="checkbox"]:disabled + label {
     position: absolute;
     font-family: 'DarkForest', sans-serif;
     font-size: max(22px, 1.6vw);
-    bottom: 70px; /* Plaats de knop precies op het rode gedeelte van de startknop */
+    bottom: 70px; /* Places the button exactly on the red part of the start button */
     left: 50%;
     transform: translateX(-50%);
     z-index: 4;
@@ -428,7 +429,7 @@ input[type="checkbox"]:disabled + label {
     cursor: pointer;
     transition: background-size 0.5s ease-out, padding 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
     background-size: 0% 100%;
-    pointer-events: auto; /* Zorg ervoor dat de knop klikbaar blijft */
+    pointer-events: auto; /* Ensures the button remains clickable */
 }
 
 #StartQuizknop:hover {
@@ -436,16 +437,16 @@ input[type="checkbox"]:disabled + label {
     border-radius: 7px;
     background-image: linear-gradient(to right, #152036c0 0%, #304878 100%);
     background-size: 250% 250%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Gebruik box-shadow voor het hover effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Uses box-shadow for the hover effect */
 }
 
 .downloadContainer {
     position: absolute;
-    bottom: -5%; /* Zorgt ervoor dat de div iets hoger staat vanaf de onderkant, afhankelijk van de schermgrootte */
-    left: -10%; /* Zorgt ervoor dat de div iets naar rechts komt vanaf de linkerkant, afhankelijk van de schermgrootte */
-    padding: 10px; /* Optioneel, voor extra ruimte binnen de div */
-    z-index: 1; /* Zorg ervoor dat de div niet door andere elementen wordt bedekt */
-    transform: translate(-103%, 15%); /* Verplaatst de div 20% naar links en 20% naar beneden */
+    bottom: -5%; /* Ensures the div stands slightly higher from the bottom, depending on the screen size */
+    left: -10%; /* Ensures the div comes a bit to the right from the left side, depending on the screen size */
+    padding: 10px; /* Optional, for extra space within the div */
+    z-index: 1; /* Ensures the div is not covered by other elements */
+    transform: translate(-103%, 15%); /* Moves the div 20% to the left and 20% down */
 }
 
 
@@ -479,6 +480,7 @@ button#Downloadknop:hover {
     transform: translateX(-50%);
     width: 33%;
     font-size: 1.2vw;
+    border-radius:5px;
     padding: 10px;
     background-color: #304878;
     color: white;
@@ -515,7 +517,7 @@ body.videoPlayer {
     background-repeat: no-repeat;
 }
 
-#videoPlayerContainer {
+.videoPlayerContainer {
     position: fixed;
     top: 45%;
     left: 60%;
@@ -543,7 +545,7 @@ video {
 
 .buttonContainer {
     position: absolute;
-    bottom: 0.9vh;
+    bottom: clamp(35px, 1.5vh, 50px);
     left: 3.7vw;
     display: flex;
     flex-direction: row;
@@ -554,7 +556,7 @@ video {
 #Terugknop, #shuffleknop {
     padding: 8px 15px;
     font-family: 'DarkForest', sans-serif;
-    background-color: rgba(255, 255, 255, 0.068); 
+    background-color: rgba(255, 255, 255, 0.068);
     color: white;
     border: none;
     border-radius: 5px;
@@ -659,38 +661,182 @@ video {
     background-size: 200% 200%;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 470px) and (min-width: 360px) {
+    .customContainer {
+        display: none !important;
+    }
+    
+    .videoPlayerContainer {
+        position: fixed; /* Ensures the container remains in a fixed position */
+        top: 45%; /* Sets the top of the container at the middle of the viewport */
+        left: 50%; /* Sets the left of the container at the middle of the viewport */
+        transform: translate(-50%, -50%); /* Shifts the container by half its width and height to perfectly center it */
+        width: calc(100% - 30px); /* Allows for a margin of 20px on each side */
+        height: calc(100vh - 60px); /* Height of the container minus margins at the top and bottom */
+        max-width: 100%; /* Limits the maximum width of the container */
+        min-width: 360px;
+        max-height: 100%; /* Limits the height to the available space */
+        z-index: 1; /* Ensures the container appears above other elements */
+        box-sizing: border-box;
+    }
+
+    video {
+        width: 100%;
+        height: auto;
+        max-height: 100%; /* Ensures the video never exceeds the size of the container */
+        border-radius: 10px;
+        border: 1px solid white;
+        object-fit: contain; /* Ensures the video fits within the container without stretching */
+        display: block;
+    } 
+
+    #Terugknop, #shuffleknop {
+        font-size: max(25px, 10vw); /* Adjust the font size for larger screens */
+        padding: 12px 25px; /* Ensure adequate padding */
+    }
+
     .intro-text h1 {
-        font-size: clamp(36px, 8vw, 48px); /* Maak de h1 iets groter met een minimum van 36px en een maximum van 48px */
+        font-size: clamp(36px, 8vw, 48px); /* Make the h1 slightly larger with a minimum of 36px and a maximum of 48px */
         color: #152036;
         margin-bottom: 80px;
     }
 
+    .intro-text h1, .intro-text h2, .intro-text .subtitle {
+        width: 100%;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .intro-text h1 {
+        font-size: clamp(35px, 2.9vw, 60px);
+        color: #152036;
+        transform: translate(0%, -30%);
+    }
+
+    .intro-text h2 {
+        font-size: clamp(18px, 2vw, 24px);
+        color: #465267;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+
     .center-container::before {
-        display: hidden;
+        display: none;
     }
     
 
     .center-container {
-        width: 95%;
-        max-width: 570px;
+        width: 97%;
+        max-width: 410px;
         min-width: 350px;
         padding: 15px;
         box-sizing: border-box;
-        top: 10%; /* Verlaag de positie om ruimte te maken voor de header */
+        top: 12%; /* Lower the position to make room for the header */
         left: 50%;
-        transform: translate(-50%, 0); /* Verwijder het verticale centreren */
-        position: absolute;
+        transform: translate(-50%, 0); /* Remove the vertical centering */
+        position:absolute;
         flex-grow: 1;
         display: flex;
         flex-direction: column;
-        justify-content: center; /* Zorgt ervoor dat de inhoud verticaal wordt gecentreerd */
-        overflow: auto; /* Zorgt ervoor dat de inhoud gescrold kan worden als deze te groot is */
-        height: auto; /* Zorgt ervoor dat de container automatisch past bij de inhoud */
+        justify-content: center; /* Ensures the content is vertically centered */
+        overflow: auto; /* Ensures the content can be scrolled if it's too large */
+        height: auto; /* Ensures the container automatically fits the content */
+        
     }
 
+    .theme-row .level-toggles label:last-of-type {
+    margin-right: 5px; /* Adjust the value as desired */
+    }
+
+    .theme-row .level-toggles label{
+    margin-right: 30px; /* Adjust the value as desired */
+    }
+
+
+
+    /* Styling for the individual checkboxes "1", "2", "3" */
+    .theme-row input.level-toggle {
+        position:relative;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: max(18px, 1.4vw);
+        height: max(18px, 1.4vw);
+        background-color: #304878c7;
+        border: 3px solid white;
+        border-radius: 6px;
+        cursor: pointer;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    }
+        /* Specific styling for the first label in each theme row */
+    .theme-row label:first-of-type {
+        flex-grow: 1;
+        text-align: left;
+        font-size: max(15px, 1.2vw);
+    }
+
+    /* General styling for all checkbox elements */
+    input[type="checkbox"] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        font-family: 'DarkForest', sans-serif; 
+        width: max(17px, 1.4vw);
+        height: max(17px, 1.4vw);
+        background-color: #304878c7;
+        border: 3px solid white;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+
+
+    /* General styling for labels within theme rows */
+    .theme-row label {
+        margin-right: 12px;
+        white-space: nowrap;
+        position: relative;
+        display: inline-block;
+        font-size: max(14px, 1.2vw);
+        justify-content: center;
+    }
+
+    .theme-row:first-of-type label {
+        margin-right: 30px; /* Custom margin for the first theme row */
+    }
+
+    .theme-row label:first-of-type {
+    margin-right: 40px;  /* Custom margin for the first theme row */
+    }
+
+    .theme-row label:last-of-type {
+        margin-right: 4px;
+
+    }
+
+    input[type="checkbox"]{
+        margin-right: 4px; /* 1px space between the checkbox and its corresponding number */
+    }
+
+        /* Add an icon to the label of an enabled checkbox in the theme rows */
+    .theme-row .enabled-checkbox + label:after {
+        content: " 🎬"; /* Clapper Board Emoji as an example */
+        color: #152036;
+        font-size: 12px;
+    }
+
+
+    /* Styling for the label that follows a disabled checkbox */
+    .disabled-checkbox + label:after {
+        content: " \231B ";
+        color: #152036;
+        font-size: 12px;
+    }
+
+
     button#Downloadknop {
-        display: none; /* Verberg de downloadknop op kleinere schermen */
+        display: none; /* Hide the download button on smaller screens */
     }
 
     button#Downloadknop:hover {
@@ -708,7 +854,7 @@ video {
     }
 
     footer .icon img {
-        width: 16vw; /* Vergroot de iconen naar 12% van de viewport breedte */
+        width: 16vw; /* Increase the icons to 12% of the viewport width */
         height: auto;
         display: inline-block;
     }
@@ -716,7 +862,7 @@ video {
     button#StartQuizknop {
          font-family: 'DarkForest', sans-serif;
         position: absolute;
-        bottom: -12%; /* Zet de startknop aan de onderkant */
+        bottom: -12%; /* Set the start button at the bottom */
         left: 50%;
         transform: translateX(-50%);
         width: 40%;
@@ -729,16 +875,16 @@ video {
     }
 
     .start-container {
-        position: absolute; /* Absolute positionering zodat de container goed te plaatsen is */
-        bottom: 50px; /* Verhoog de container door deze waarde te verhogen, bijvoorbeeld 20px */
-        left: 50%; /* Plaats de container horizontaal gecentreerd */
-        transform: translateX(-50%); /* Nauwkeurige horizontale centrering */
-        width: 100%; /* Zorg ervoor dat de container de volledige breedte inneemt */
-        display: flex; /* Gebruik flexbox om de items binnen de container te centreren */
-        justify-content: center; /* Centreer de inhoud horizontaal */
-        align-items: flex-end; /* Plaats de inhoud aan de onderkant van de container */
-        pointer-events: none; /* Zorg ervoor dat de container zelf geen muisklikken vangt */
-        z-index: 1; /* Zorg ervoor dat de container boven de footer ligt */
+        position: absolute; /* Absolute positioning to properly place the container */
+        bottom: 80px; /* Raise the container by increasing this value, for example, 20px */
+        left: 50%; /* Horizontally center the container */
+        transform: translateX(-50%); /* Accurate horizontal centering */
+        width: 100%; /* Ensure the container takes up the full width */
+        display: flex; /* Use flexbox to center the items within the container */
+        justify-content: center; /* Horizontally center the content */
+        align-items: flex-end; /* Place the content at the bottom of the container */
+        pointer-events: none; /* Ensure the container itself does not catch mouse clicks */
+        z-index: 1; /* Ensure the container is above the footer */
     }
 
     button#StartQuizknop:hover {
@@ -748,11 +894,11 @@ video {
 
     .startknop img {
         position: absolute;
-        top: -50px; /* Zorg ervoor dat het rode gedeelte van de knop boven de footer komt */
+        top: -60px; /* Ensure the red part of the button is above the footer */
         left: 50%;
         transform: translateX(-50%);
         z-index: 2;
-        width: max(110px, 11vw); /* Schaal de breedte naar 10% van de viewport, met een minimum van 80px */
+        width: max(110px, 11vw); /* Scale the width to 10% of the viewport, with a minimum of 80px */
         height: auto;
     }
 
@@ -768,7 +914,7 @@ video {
         padding-top: 60px;
         display: flex;
         flex-direction: column;
-        min-height: 100vh; /* Zorgt ervoor dat de body minstens de hoogte van de viewport heeft */
+        min-height: 100vh; /* Ensures the body is at least the height of the viewport */
     }
 
     .warning-message {
@@ -777,9 +923,54 @@ video {
         width: 90%;
         margin: 0 auto;
     }
-}
 
-@media only screen and (max-width: 1400px) { /* Pas dit aan afhankelijk van wanneer het probleem optreedt */
+}  
+
+@media only screen and (max-width: 1400px) and (min-width: 470px) { /* Adjust depending on when the issue occurs */
+    .customContainer {
+        display: none !important;
+    }
+
+    .buttonContainer {
+        bottom: 3vh; /* A bit more space for smaller screens */
+        left: 50%; /* Places the left side of the container in the middle of the viewport */
+        transform: translateX(-50%); /* Shifts the container by half its width to perfectly center it horizontally */
+        display: flex; /* Use flexbox for positioning the buttons */
+        flex-direction: row; /* Ensure the buttons are next to each other */
+        gap: 30px; /* Adjust the gap for more space between the buttons, increase this value as desired */
+        z-index: 1; /* Ensure the buttons are above other elements */
+    }
+
+    #Terugknop, #shuffleknop {
+        font-size: clamp(15px, 1.6vw, 25px); /* Slightly larger on smaller screens */
+        padding: 10px 20px; /* Adjust the padding for better clickability */
+    }
+
+    .videoPlayerContainer {
+        position: fixed; /* Ensures the container remains in a fixed position */
+        top: 45%; /* Sets the top of the container at the middle of the viewport */
+        left: 50%; /* Sets the left of the container at the middle of the viewport */
+        transform: translate(-50%, -50%); /* Shifts the container by half its width and height to perfectly center it */
+        width: calc(100% - 30px); /* Allows for a margin of 20px on each side */
+        height: calc(100vh - 60px); /* Height of the container minus margins at the top and bottom */
+        max-width: 80%; /* Limits the maximum width of the container */
+        min-width: 450px;
+        max-height: 100%; /* Limits the height to the available space */
+        z-index: 1; /* Ensures the container appears above other elements */
+        box-sizing: border-box;
+    }
+    
+    video {
+        width: 100%;
+        height: auto;
+        max-height: 100%; /* Ensures the video never exceeds the size of the container */
+        border-radius: 10px;
+        border: 1px solid white;
+        object-fit: contain; /* Ensures the video fits within the container without stretching */
+        display: block;
+    }
+    
+    
     body.futurefilms {
         font-family: 'DarkForest', sans-serif;
         display: flex;
@@ -792,43 +983,59 @@ video {
         background-size: cover;
         background-position: center top;
         background-repeat: no-repeat;
-        overflow: hidden; /* Voorkom onnodig scrollen in de body */
+        overflow: hidden; /* Prevent unnecessary scrolling in the body */
     }
     .center-container {
-        width: 55%; /* Pas dit aan zoals gewenst */
-        max-width: 800px; /* Zorg voor een maximale breedte afhankelijk van de viewport */
+        width: 55%; /* Adjust as desired */
+        max-width: 620px; /* Ensure a maximum width depending on the viewport */
+        min-width: 500px; /* Ensure a minimum width to scale properly */
         height: auto;
-        max-height: calc(100vh - 20px - 2rem - 45px); /* Max hoogte minus header en footer */
-        margin: 0 auto; /* Gebruik margin om de container goed te positioneren */
-        overflow-y: auto; /* Sta verticale scroll toe */
-        overflow-x: hidden; /* Voorkom horizontale scroll */
+        max-height: calc(100vh - 40px - 4rem - 55px); /* Max height minus header and footer, scroll a bit earlier */
+        margin: 0 auto; /* Use margin to properly position the container */
+        overflow-y: scroll; /* Allow vertical scroll */
+        overflow-x: hidden; /* Prevent horizontal scroll */
         position: absolute;
-        top: calc(5px + 2rem); /* Start direct onder de header, 20px en 2rem is de header hoogte */
+        top: calc(5px + 2rem); /* Start directly below the header, 20px and 2rem is the header height */
         left: 50%;
         transform: translateX(-50%);
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color: rgba(255, 255, 255, 0.8); /* Maak de achtergrond iets transparant */
+        background-color: rgba(255, 255, 255, 0.8); /* Make the background slightly transparent */
         border: 10px solid #304878;
         border-radius: 15px;
-        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.30); /* Voeg een subtiele schaduw toe */
-        padding: 10px; /* Voeg padding toe zodat de inhoud niet tegen de rand staat */
-        box-sizing: border-box; /* Zorg dat padding wordt meegerekend in de breedte */
-        z-index: 1; /* Zorg dat de container boven andere inhoud komt */
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.30); /* Adds a subtle shadow */
+        padding: 10px; /* Add padding so that the content does not touch the edge */
+        box-sizing: border-box; /* Ensure padding is included in the width */
+        z-index: 1; /* Ensure the container is above other content */
     }
     
 
     .center-container::before {
         display: none;
     }
+
+    /* General styling for labels within theme rows */
+.theme-row label {
+    margin-right: 20px;
+    white-space: nowrap;
+    position: relative;
+    display: inline-block;
+    font-size: max(15px, 1.2vw);
+    justify-content: center;
+}
+
+
+.theme-row:first-of-type label {
+    margin-right: 35px; /* Custom margin for the first theme row */
+}
     
 
     button#StartQuizknop {
-        position: absolute;
+        position:absolute;
         font-family: 'DarkForest', sans-serif;
         font-size: max(22px, 1.6vw);
-        bottom: 70px; /* Plaats de knop precies op het rode gedeelte van de startknop */
+        bottom: 70px; /* Place the button exactly on the red part of the start button */
         left: 50%;
         transform: translateX(-50%);
         z-index: 4;
@@ -840,7 +1047,7 @@ video {
         cursor: pointer;
         transition: background-size 0.5s ease-out, padding 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
         background-size: 0% 100%;
-        pointer-events: auto; /* Zorg ervoor dat de knop klikbaar blijft */
+        pointer-events: auto; /* Ensures the button remains clickable */
     }
 
     button#StartQuizknop:hover {
@@ -848,7 +1055,7 @@ video {
         border-radius: 7px;
         background-image: linear-gradient(to right, #152036c0 0%, #304878 100%);
         background-size: 250% 250%;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Gebruik box-shadow voor het hover effect */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Uses box-shadow for the hover effect */
     }
 
     #themesForm {
@@ -856,41 +1063,37 @@ video {
         margin-top: 2px;
         border: 6px solid #152036;
         border-radius: 10px;
-        width: 100%; /* Zorg ervoor dat het formulier de volledige breedte van de container inneemt */
-        box-sizing: border-box; /* Houd rekening met padding en border bij de breedte */
+        width: 100%; /* Ensures the form takes up the full width of the container */
+        box-sizing: border-box; /* Considers padding and border in the width */
     }
 
     .start-container {
-        position: fixed; /* Zorg ervoor dat de start-container altijd onderaan het scherm blijft */
-        bottom: -25px; /* Plaats de container direct aan de onderkant van het scherm */
+        position: fixed; /* Ensures the start-container always stays at the bottom of the screen */
+        bottom: -10px; /* Places the container directly at the bottom of the screen */
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-        z-index: 2; /* Zorg dat de startknop boven de container komt */
-        pointer-events: none; /* Zorg ervoor dat deze container geen muisklikken opvangt */
-    }
-
-    .center-container {
-        overflow-y: scroll;
+        z-index: 2; /* Ensures the start button is above the container */
+        pointer-events: none; /* Ensures this container does not catch mouse clicks */
     }
     
     .center-container::-webkit-scrollbar {
-        width: 10px; /* Voeg een scrollbar toe met een breedte van 10px */
+        width: 10px; /* Adds a scrollbar with a width of 10px */
     }
     
     .center-container::-webkit-scrollbar-track {
-        background: transparent; /* Track van de scrollbar is transparant */
+        background: transparent; /* Track of the scrollbar is transparent */
     }
     
     .center-container::-webkit-scrollbar-thumb {
-        background-color: #304878; /* Kleur van de scrollbar */
-        border-radius: 10px; /* Ronde hoeken aan de scrollbar */
-        border: 2px solid #ffffff; /* Wit randje om de scrollbar */
+        background-color: #304878; /* Color of the scrollbar */
+        border-radius: 10px; /* Rounded corners on the scrollbar */
+        border: 2px solid #ffffff; /* White edge around the scrollbar */
     }
     
 
-    /* Zorg ervoor dat de header en footer ook goed werken op kleinere schermen */
+    /* Ensures the header and footer also work well on smaller screens */
     header {
         position: fixed;
         top: 0;
@@ -914,5 +1117,23 @@ video {
         padding: 3vh 0;
         z-index: 1000;
         overflow: hidden;
+    }
+    
+}
+
+
+@media only screen and (min-width: 1960px) {
+    #StartQuizknop {
+        bottom: 100px; /* Moves the button up slightly for larger screens */
+    }
+
+    .buttonContainer {
+        bottom: 8vh; /* Moves the buttons up slightly on very large screens */
+        left: 4vw;
+    }
+    
+    #Terugknop, #shuffleknop {
+        font-size: max(16px, 1.2vw); /* Adjust the font size for larger screens */
+        padding: 12px 25px; /* Ensure adequate padding */
     }
 }

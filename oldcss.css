@@ -5,8 +5,8 @@
 }
 
 
-/* Styling voor het label dat volgt na een uitgeschakelde checkbox */
-.disabled-checkbox + label:after {
+/* Specifieke styling voor het label van de NiveauSelector */
+.theme-row:first-of-type input.level-toggle:disabled + label:after {
     content: " \231B ";
     color: #152036;
     font-size: 15px;

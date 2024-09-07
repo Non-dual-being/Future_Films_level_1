@@ -284,6 +284,7 @@ const beschikbareVideos = {
             "InternetofThings_1_4.mp4",
             "InternetofThings_1_5.mp4",
         ]
+    
         // Herhaal voor niveau 2 en 3
     },
 };

@@ -89,7 +89,7 @@ footer {
 
 .center-container {
     position: absolute;
-    top: 44%;
+    top: 43%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: clamp(500px, 33vw, 700px);
@@ -125,14 +125,19 @@ footer {
 .intro-text h1 {
     font-size: clamp(35px, 2.9vw, 60px);
     color: #152036;
-    transform: translate(0%, -30%);
+    transform: translate(0%, -10%);
 }
 
 .intro-text h2 {
     font-size: clamp(16px, 2vw, 24px);
-    color: #465267;
     margin-top: 10px;
     margin-bottom: 10px;
+    color: #2C3E50; /* Donkerblauw als basis */
+    background: linear-gradient(to right, #2C3E50, #5A7692); /* Donker naar wat lichter blauw */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 2px rgba(21, 32, 54, 0.3); /* Iets diepere schaduw voor meer levendigheid */
+
 }
 
 .intro-text .subtitle {
@@ -140,6 +145,7 @@ footer {
     color: #6e7b8b;
     margin-top: 20px;
     margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(21, 32, 54, 0.1); /* Iets diepere schaduw voor meer levendigheid */
 }
 
 #themesForm {
@@ -388,48 +394,49 @@ input[type="checkbox"]:disabled + label {
 }
 
 .start-container {
-    position: fixed; /* Ensures the start-container always stays at the bottom of the screen */
-    bottom: 0; /* Places the container directly at the bottom of the screen */
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    pointer-events: none;
-    z-index: 2; /* Places the container above the footer */
-}
-
-.startknop {
-    position: absolute; /* Makes the start button absolutely positioned within the start-container */
-    bottom: 0px; /* Places the start button directly at the bottom of the start-container */
+    position: fixed;
+    bottom: 0; /* Zorgt ervoor dat de container altijd direct boven de footer staat */
     left: 50%;
     transform: translateX(-50%);
-    z-index: 3; /* Ensures the start button comes above other elements */
-    pointer-events: auto;
+    width: 100%; /* Zorgt ervoor dat de container de breedte van de inhoud aanneemt */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centreert de inhoud verticaal in de container */
+    z-index: 2;
+    pointer-events: none; /* Zorgt ervoor dat de container zelf geen muisklikken opvangt */
+    height: auto; /* Past de hoogte aan op de inhoud */
 }
 
-.startknop img {
-    width: clamp(100px, 6vw, 200px); /* Scales the width with the viewport, with a minimum of 100px */
-    height: auto;
-    min-width: 100px;
+.start-knop-content {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centreert de knop en afbeelding horizontaal */
+    justify-content: flex-end;
+    pointer-events: auto; /* Zorgt ervoor dat de knop wel klikbaar blijft */
+    height: auto; /* Container wordt aangepast aan de hoogte van de inhoud */
+    margin-top:10px;
+}
+
+.startknopimg {
+    width: clamp(120px, 10vw, 130px); /* Schaalbaar naar schermgrootte */
+    height: auto; /* Houdt de verhoudingen van de afbeelding */
+    transform:translateY(10%);
 }
 
 #StartQuizknop {
     position: absolute;
+    top:10%;
     font-family: 'DarkForest', sans-serif;
-    font-size: max(22px, 1.6vw);
-    bottom: 70px; /* Places the button exactly on the red part of the start button */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 4;
+    font-size: clamp(27px, 1.6vw, 28px);
     background-color: transparent;
     color: #152036c0;
-    padding: 14px 14px;
-    padding-top: 17px;
+    padding: 18px 18px;
     border: none;
     cursor: pointer;
     transition: background-size 0.5s ease-out, padding 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
     background-size: 0% 100%;
-    pointer-events: auto; /* Ensures the button remains clickable */
 }
 
 #StartQuizknop:hover {
@@ -437,8 +444,10 @@ input[type="checkbox"]:disabled + label {
     border-radius: 7px;
     background-image: linear-gradient(to right, #152036c0 0%, #304878 100%);
     background-size: 250% 250%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Uses box-shadow for the hover effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Hover-effect */
 }
+
+
 
 .downloadContainer {
     position: absolute;
@@ -716,9 +725,13 @@ video {
 
     .intro-text h2 {
         font-size: clamp(18px, 2vw, 24px);
-        color: #465267;
         margin-top: 10px;
         margin-bottom: 10px;
+        color: #2C3E50; /* Donkerblauw als basis */
+        background: linear-gradient(to right, #2C3E50, #5A7692); /* Donker naar wat lichter blauw */
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 1px 1px 2px rgba(21, 32, 54, 0.3); /* Iets diepere schaduw voor meer levendigheid */
     }
 
 
@@ -862,7 +875,7 @@ video {
     button#StartQuizknop {
          font-family: 'DarkForest', sans-serif;
         position: absolute;
-        bottom: -12%; /* Set the start button at the bottom */
+        top: 10%; /* Set the start button at the bottom */
         left: 50%;
         transform: translateX(-50%);
         width: 40%;
@@ -1021,46 +1034,22 @@ video {
     white-space: nowrap;
     position: relative;
     display: inline-block;
-    font-size: max(15px, 1.2vw);
+    font-size: max(15px, 1.1vw);
     justify-content: center;
 }
 
-
-.theme-row:first-of-type label {
-    margin-right: 35px; /* Custom margin for the first theme row */
-}
-    
-
-    button#StartQuizknop {
-        position:absolute;
-        font-family: 'DarkForest', sans-serif;
-        font-size: max(22px, 1.6vw);
-        bottom: 70px; /* Place the button exactly on the red part of the start button */
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 4;
-        background-color: transparent;
-        color: #152036c0;
-        padding: 14px 14px;
-        padding-top: 17px;
-        border: none;
-        cursor: pointer;
-        transition: background-size 0.5s ease-out, padding 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-        background-size: 0% 100%;
-        pointer-events: auto; /* Ensures the button remains clickable */
+    .theme-row:first-of-type label {
+        margin-right: 45px; /* Custom margin for the first theme row */
     }
 
-    button#StartQuizknop:hover {
-        color: white;
-        border-radius: 7px;
-        background-image: linear-gradient(to right, #152036c0 0%, #304878 100%);
-        background-size: 250% 250%;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Uses box-shadow for the hover effect */
+    .theme-row .level-toggles label:last-of-type {
+    margin-right: 14px; /* Adjust the value as desired */
     }
 
     #themesForm {
         padding: 5px;
         margin-top: 2px;
+        margin-bottom: 2px;
         border: 6px solid #152036;
         border-radius: 10px;
         width: 100%; /* Ensures the form takes up the full width of the container */
@@ -1068,15 +1057,68 @@ video {
     }
 
     .start-container {
-        position: fixed; /* Ensures the start-container always stays at the bottom of the screen */
-        bottom: -10px; /* Places the container directly at the bottom of the screen */
-        width: 100%;
+        position: fixed;
+        bottom: 0; /* Zorgt ervoor dat de container altijd direct boven de footer staat */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%; /* Zorgt ervoor dat de container de breedte van de inhoud aanneemt */
         display: flex;
         justify-content: center;
-        align-items: center;
-        z-index: 2; /* Ensures the start button is above the container */
-        pointer-events: none; /* Ensures this container does not catch mouse clicks */
+        align-items: center; /* Centreert de inhoud verticaal in de container */
+        z-index: 2;
+        pointer-events: none; /* Zorgt ervoor dat de container zelf geen muisklikken opvangt */
+        height: auto; /* Past de hoogte aan op de inhoud */
     }
+    
+    .start-knop-content {
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centreert de knop en afbeelding horizontaal */
+        justify-content: flex-end;
+        pointer-events: auto; /* Zorgt ervoor dat de knop wel klikbaar blijft */
+        height: auto; /* Container wordt aangepast aan de hoogte van de inhoud */
+        margin-top:10px;
+    }
+    
+    .startknopimg {
+        width: clamp(120px, 10vw, 130px); /* Schaalbaar naar schermgrootte */
+        height: auto; /* Houdt de verhoudingen van de afbeelding */
+        transform:translateY(10%);
+    }
+    
+    #StartQuizknop {
+        position: absolute;
+        top:10%;
+        font-family: 'DarkForest', sans-serif;
+        font-size: clamp(27px, 1.6vw, 28px);
+        background-color: transparent;
+        color: #152036c0;
+        padding: 18px 18px;
+        border: none;
+        cursor: pointer;
+        transition: background-size 0.5s ease-out, padding 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        background-size: 0% 100%;
+    }
+    
+    #StartQuizknop:hover {
+        color: white;
+        border-radius: 7px;
+        background-image: linear-gradient(to right, #152036c0 0%, #304878 100%);
+        background-size: 250% 250%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Hover-effect */
+    }
+    
+.downloadContainer {
+    position: absolute;
+    bottom: -5%; /* Ensures the div stands slightly higher from the bottom, depending on the screen size */
+    left: -10%; /* Ensures the div comes a bit to the right from the left side, depending on the screen size */
+    padding: 10px; /* Optional, for extra space within the div */
+    z-index: 1; /* Ensures the div is not covered by other elements */
+    transform: translate(-103%, 15%); /* Moves the div 20% to the left and 20% down */
+}
+
     
     .center-container::-webkit-scrollbar {
         width: 10px; /* Adds a scrollbar with a width of 10px */
@@ -1123,10 +1165,7 @@ video {
 
 
 @media only screen and (min-width: 1960px) {
-    #StartQuizknop {
-        bottom: 100px; /* Moves the button up slightly for larger screens */
-    }
-
+  
     .buttonContainer {
         bottom: 8vh; /* Moves the buttons up slightly on very large screens */
         left: 4vw;
@@ -1136,4 +1175,170 @@ video {
         font-size: max(16px, 1.2vw); /* Adjust the font size for larger screens */
         padding: 12px 25px; /* Ensure adequate padding */
     }
+    .center-container{
+        max-width:900px
+    }
+
+    .intro-text h1 {
+    font-size: clamp(35px, 2.9vw, 80px);
+    color: #152036;
+    transform: translate(0%, -30%);
+}
+
+.intro-text h2 {
+    font-size: clamp(16px, 2vw, 40px);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #2C3E50; /* Donkerblauw als basis */
+    background: linear-gradient(to right, #2C3E50, #5A7692); /* Donker naar wat lichter blauw */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 2px rgba(21, 32, 54, 0.3); /* Iets diepere schaduw voor meer levendigheid */
+
+}
+
+.intro-text .subtitle {
+    font-size: clamp(12px, 1.5vw, 30px);
+    color: #6e7b8b;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(21, 32, 54, 0.1); /* Iets diepere schaduw voor meer levendigheid */
+}
+
+.center-container {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: clamp(800px, 33vw, 1200px);
+    min-height: 30vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+button#Downloadknop {
+    font-family: 'DarkForest', sans-serif;
+    font-size: max(25px, 1.5vw);
+    padding: 10px 20px;
+    background-color: transparent;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    color: #152036;
+    border: 0.2vw solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-size 0.5s ease-out, padding 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    background-size: 0% 100%;
+}
+
+.downloadContainer {
+    position: absolute;
+    bottom: -15%; /* Ensures the div stands slightly higher from the bottom, depending on the screen size */
+    left: -10%; /* Ensures the div comes a bit to the right from the left side, depending on the screen size */
+    padding: 10px; /* Optional, for extra space within the div */
+    z-index: 1; /* Ensures the div is not covered by other elements */
+    transform: translate(-103%, 15%); /* Moves the div 20% to the left and 20% down */
+}
+
+    /* General styling for labels within theme rows */
+.theme-row label {
+    margin-right: 60px;
+    white-space: nowrap;
+    position: relative;
+    display: inline-block;
+    font-size: max(15px, 1.1vw);
+    justify-content: center;
+}
+
+    .theme-row:first-of-type label {
+        margin-right: 90px; /* Custom margin for the first theme row */
+    }
+
+    .theme-row .level-toggles label:last-of-type {
+    margin-right: 30px; /* Adjust the value as desired */
+    }
+
+    .theme-row .level-toggle label{
+        margin-right: 115px;
+
+    }
+
+    .start-container {
+        position: fixed;
+        bottom: 0; /* Zorgt ervoor dat de container altijd direct boven de footer staat */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%; /* Zorgt ervoor dat de container de breedte van de inhoud aanneemt */
+        display: flex;
+        justify-content: center;
+        align-items: center; /* Centreert de inhoud verticaal in de container */
+        z-index: 2;
+        pointer-events: none; /* Zorgt ervoor dat de container zelf geen muisklikken opvangt */
+        height: auto; /* Past de hoogte aan op de inhoud */
+    }
+    
+    .start-knop-content {
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centreert de knop en afbeelding horizontaal */
+        justify-content: flex-end;
+        pointer-events: auto; /* Zorgt ervoor dat de knop wel klikbaar blijft */
+        height: auto; /* Container wordt aangepast aan de hoogte van de inhoud */
+        margin-top:10px;
+    }
+    
+    .startknopimg {
+        width: clamp(120px, 10vw, 130px); /* Schaalbaar naar schermgrootte */
+        height: auto; /* Houdt de verhoudingen van de afbeelding */
+        transform:translateY(10%);
+    }
+    
+    #StartQuizknop {
+        position: absolute;
+        top:10%;
+        font-family: 'DarkForest', sans-serif;
+        font-size: clamp(27px, 1.6vw, 28px);
+        background-color: transparent;
+        color: #152036c0;
+        padding: 18px 18px;
+        border: none;
+        cursor: pointer;
+        transition: background-size 0.5s ease-out, padding 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        background-size: 0% 100%;
+    }
+    
+    #StartQuizknop:hover {
+        color: white;
+        border-radius: 7px;
+        background-image: linear-gradient(to right, #152036c0 0%, #304878 100%);
+        background-size: 250% 250%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Hover-effect */
+    }
+
+        /* Add an icon to the label of an enabled checkbox in the theme rows */
+    .theme-row .enabled-checkbox + label:after {
+        content: " 🎬"; /* Clapper Board Emoji as an example */
+        color: #152036;
+        font-size: 25px;
+    }
+
+
+    /* Styling for the label that follows a disabled checkbox */
+    .disabled-checkbox + label:after {
+        content: " \231B ";
+        color: #152036;
+        font-size: 25px;
+    }
+ 
+        
+    
+
+
+
+    
 }

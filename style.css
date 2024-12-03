@@ -89,6 +89,14 @@ footer {
     margin: 0 18px;
 }
 
+.offscreen{
+    position: absolute;
+    top: 10000px;
+    left: 10000px;
+}
+
+
+
 .center-container {
     position: absolute;
     top: 43%;
@@ -176,11 +184,14 @@ footer {
     background-color: #3A5078;
 }
 
-#themesForm::after {
+ #themesForm::after {
     left: 50%;
     width: 50%;
     background-color: #F4F4F8;
-}
+} 
+
+
+/* Gen
 /* General styling for the rows in the theme list */
 .theme-row {
     display: flex;
@@ -192,9 +203,19 @@ footer {
     padding: 5px 4px;
     color: #2B305F;
     font-size: max(20px, 1.2vw);
-    background: linear-gradient(to right, #2B305F 50%, #e8e8e8 50%);
-    border: white 1px solid;
+    background: linear-gradient(to right, 
+        #2B305F 50%, 
+        rgb(232, 232, 232, 0.1) 40%,
+        rgba(255, 255, 255, 0) 50%, 
+        rgb(232, 232, 232) 80%
+    ),
+    url('filmrol.webp') repeat-x;
+    background-position: center;
+    background-size: auto 110%; /* Filmrol past zich aan de hoogte aan */
+    border: white 2px solid;
+    position: relative;
 }
+
 
 /* Specific styling for the first row in the theme list (NiveauSelector) */
 .theme-row:first-of-type {
@@ -370,7 +391,7 @@ input[type="checkbox"]{
 
 /* Styling for checkboxes that are disabled (not level selector) */
 input[type="checkbox"]:disabled {
-    opacity: 0.6;
+    opacity: 0;  /* later terugzetten*/
     background-color: #b3d1ff;
     cursor: default;
 }
@@ -393,7 +414,11 @@ input[type="checkbox"]:disabled + label {
     content: " \231B ";
     color: #152036;
     font-size: 15px;
+    
 }
+
+
+
 
 .start-container {
     position: fixed;

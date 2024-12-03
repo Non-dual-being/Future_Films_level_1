@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const themesLabel = document.createElement('label');
     themesLabel.className = 'themes-label';
-    themesLabel.textContent = 'NiveauSelector';
+    themesLabel.textContent = 'Selector';
     levelHeaderDiv.appendChild(themesLabel);
 
     const levelTogglesDiv = document.createElement('div');
@@ -43,9 +43,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const toggleLabel = document.createElement('label');
         toggleLabel.htmlFor = `niv${level}`;
-        toggleLabel.textContent = level;
+        toggleLabel.textContent = ""; //hier stond level
+
+        if (!input.disabled) {
         levelTogglesDiv.appendChild(input);
-        levelTogglesDiv.appendChild(toggleLabel);
+        levelTogglesDiv.appendChild(toggleLabel);};
     });
     levelHeaderDiv.appendChild(levelTogglesDiv);
     fragment.appendChild(levelHeaderDiv);
@@ -72,14 +74,15 @@ document.addEventListener('DOMContentLoaded', function () {
             } else {
                 input.addEventListener('change', handleCheckboxChange);
                 input.classList.add('enabled-checkbox');
+                const levelLabel = document.createElement('label');
+                levelLabel.htmlFor = input.id;
+                 levelLabel.textContent = ""; //hier stond level
+    
+                themeDiv.appendChild(input);
+                themeDiv.appendChild(levelLabel);
             }
 
-            const levelLabel = document.createElement('label');
-            levelLabel.htmlFor = input.id;
-            levelLabel.textContent = level;
-
-            themeDiv.appendChild(input);
-            themeDiv.appendChild(levelLabel);
+          
         });
 
         fragment.appendChild(themeDiv);
